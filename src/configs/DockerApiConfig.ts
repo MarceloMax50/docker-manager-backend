@@ -1,5 +1,5 @@
 
-import {Docker} from "dockerode";
+import Docker from "dockerode";
 
 class DockerApiConfig {
 var docker = new Docker({socketPath: '/var/run/docker.sock'});
