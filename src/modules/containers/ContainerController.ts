@@ -1,19 +1,68 @@
 import { NextFunction, Request, Response } from "express";
 
-import UsersService from "./containers.service";
+import ContainerDockerApi from "./ContainerDockerApi";
 
-class UsersController {
-  public async show(request: Request, response: Response, next: NextFunction) {
+class ContainerController {
+  public async listAll(
+    request: Request,
+    response: Response,
+    next: NextFunction
+  ) {
     try {
-      const service = new UsersService();
+      const dockerApi = new ContainerDockerApi();
 
-      const user = await service.show();
+      const container = await dockerApi.show();
 
-      return response.json(user);
+      return response.json(container);
+    } catch (err) {
+      return next(err);
+    }
+  }
+  public async create(
+    request: Request,
+    response: Response,
+    next: NextFunction
+  ) {
+    try {
+      const dockerApi = new ContainerDockerApi();
+
+      const container = await dockerApi.show();
+
+      return response.json(container);
+    } catch (err) {
+      return next(err);
+    }
+  }
+  public async delete(
+    request: Request,
+    response: Response,
+    next: NextFunction
+  ) {
+    try {
+      const dockerApi = new ContainerDockerApi();
+
+      const container = await dockerApi.show();
+
+      return response.json(container);
+    } catch (err) {
+      return next(err);
+    }
+  }
+  public async deleteAll(
+    request: Request,
+    response: Response,
+    next: NextFunction
+  ) {
+    try {
+      const dockerApi = new ContainerDockerApi();
+
+      const container = await dockerApi.show();
+
+      return response.json(container);
     } catch (err) {
       return next(err);
     }
   }
 }
 
-export default UsersController;
+export default ContainerController;
