@@ -1,7 +1,7 @@
 import request from "requestretry";
 
-const DOCKER_HOST_IP = "";
-const DOCKER_HOST_PORT = "";
+const DOCKER_HOST_IP = "192.168.0.179";
+const DOCKER_HOST_PORT = "2375";
 export let baseUrl = `http://${DOCKER_HOST_IP}:${DOCKER_HOST_PORT}`;
 
 class DockerApiConfig {

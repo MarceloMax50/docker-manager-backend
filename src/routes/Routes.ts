@@ -2,11 +2,17 @@ import express from "express";
 
 import ContainerController from "../modules/containers/ContainerController";
 import ImageController from "../modules/images/ImageController";
+import Auth from "../modules/Auth/Auth";
 
 const router = express.Router();
 
 const containerController = new ContainerController();
 const imageController = new ImageController();
+const auth = new Auth();
+/**
+ * Container routes
+ */
+router.post("/auth", auth.authenticate);
 
 /**
  * Container routes
