@@ -11,7 +11,7 @@ class ContainerController {
     try {
       const dockerApi = new ContainerDockerApi();
 
-      const container = await dockerApi.show();
+      const container = await dockerApi.listAllApi();
 
       return response.json(container);
     } catch (err) {
@@ -24,9 +24,11 @@ class ContainerController {
     next: NextFunction
   ) {
     try {
+      const body = request.body;
+      const { name } = request.params;
       const dockerApi = new ContainerDockerApi();
 
-      const container = await dockerApi.show();
+      const container = await dockerApi.createApi(name, body);
 
       return response.json(container);
     } catch (err) {
@@ -39,9 +41,10 @@ class ContainerController {
     next: NextFunction
   ) {
     try {
+      const { id } = request.params;
       const dockerApi = new ContainerDockerApi();
 
-      const container = await dockerApi.show();
+      const container = await dockerApi.deleteApi(id);
 
       return response.json(container);
     } catch (err) {
@@ -56,7 +59,7 @@ class ContainerController {
     try {
       const dockerApi = new ContainerDockerApi();
 
-      const container = await dockerApi.show();
+      const container = await dockerApi.deleteAllApi();
 
       return response.json(container);
     } catch (err) {

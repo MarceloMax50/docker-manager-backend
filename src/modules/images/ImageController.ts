@@ -11,7 +11,7 @@ class ImageController {
     try {
       const dockerApi = new ImageDockerApi();
 
-      const image = await dockerApi.show();
+      const image = await dockerApi.listAllApi();
 
       return response.json(image);
     } catch (err) {
@@ -24,9 +24,11 @@ class ImageController {
     next: NextFunction
   ) {
     try {
+      const body = request.body;
+      const { name } = request.params;
       const dockerApi = new ImageDockerApi();
 
-      const image = await dockerApi.show();
+      const image = await dockerApi.createApi(name, body);
 
       return response.json(image);
     } catch (err) {
@@ -39,9 +41,10 @@ class ImageController {
     next: NextFunction
   ) {
     try {
+      const { id } = request.params;
       const dockerApi = new ImageDockerApi();
 
-      const image = await dockerApi.show();
+      const image = await dockerApi.deleteApi(id);
 
       return response.json(image);
     } catch (err) {
@@ -56,7 +59,7 @@ class ImageController {
     try {
       const dockerApi = new ImageDockerApi();
 
-      const image = await dockerApi.show();
+      const image = await dockerApi.deleteAllApi();
 
       return response.json(image);
     } catch (err) {
