@@ -1,49 +1,49 @@
 import request from "requestretry";
-import * as baseUrl from "../../configs/DockerApiConfig";
-class ImageDockerApi {
-  public async listAllApi() {
-    let url = `${baseUrl}/images/json?all=true`;
-    let response = await request({
-      url: `${baseUrl}/images/json?all=true`,
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
 
-    return JSON.parse(response);
-  }
+// class ImageDockerApi {
+//   public async listAllApi() {
+//     let url = `${baseUrl}/images/json?all=true`;
+//     let response = await request({
+//       url: `${baseUrl}/images/json?all=true`,
+//       method: "GET",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
 
-  public async createApi(name: string, body: object) {
-    let url = `${baseUrl}/images/create?fromImage=${name}`;
-    let response = await request({
-      url: `${baseUrl}/images/json?all=true`,
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    });
+//     return JSON.parse(response);
+//   }
 
-    return JSON.parse(response);
-  }
-  public async deleteApi(id: string) {
-    let url = `${baseUrl}/images/${id}`;
-    let response = await request({
-      url: `${baseUrl}/images/json?all=true`,
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  }
-  public async deleteAllApi() {
-    let containerList = await this.listAllApi();
+//   public async createApi(name: string, body: object) {
+//     let url = `${baseUrl}/images/create?fromImage=${name}`;
+//     let response = await request({
+//       url: `${baseUrl}/images/json?all=true`,
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(body),
+//     });
 
-    containerList.array.forEach((container: { id: string }) => {
-      this.deleteApi(container.id);
-    });
-  }
-}
+//     return JSON.parse(response);
+//   }
+//   public async deleteApi(id: string) {
+//     let url = `${baseUrl}/images/${id}`;
+//     let response = await request({
+//       url: `${baseUrl}/images/json?all=true`,
+//       method: "DELETE",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
+//   }
+//   public async deleteAllApi() {
+//     let containerList = await this.listAllApi();
 
-export default ImageDockerApi;
+//     containerList.array.forEach((container: { id: string }) => {
+//       this.deleteApi(container.id);
+//     });
+//   }
+// }
+
+// export default ImageDockerApi;
