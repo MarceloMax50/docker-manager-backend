@@ -1,25 +1,25 @@
 import { NextFunction, Request, Response } from "express";
 
-import { ContainersService } from "./containers.service";
+import { ImagesService } from "./images.service";
 
-export class ContainersController {
+export class ImagesController {
   public async list(request: Request, response: Response, next: NextFunction) {
-    const containersService = new ContainersService();
+    const imagesService = new ImagesService();
 
     try {
-      const containers = await containersService.list();
-      return response.json(containers);
+      const images = await imagesService.list();
+      return response.json(images);
     } catch (err) {
       next(err);
     }
   }
   public async show(request: Request, response: Response, next: NextFunction) {
-    const containersService = new ContainersService();
+    const imagesService = new ImagesService();
 
     try {
       const { id } = request.params;
-      const container = await containersService.show(id);
-      return response.json(container);
+      const image = await imagesService.show(id);
+      return response.json(image);
     } catch (err) {
       next(err);
     }
@@ -30,12 +30,12 @@ export class ContainersController {
     response: Response,
     next: NextFunction
   ) {
-    const containersService = new ContainersService();
+    const imagesService = new ImagesService();
 
     try {
       const { body } = request;
-      const container = await containersService.create(body);
-      return response.json(container);
+      const image = await imagesService.create(body);
+      return response.json(image);
     } catch (err) {
       next(err);
     }
@@ -46,12 +46,12 @@ export class ContainersController {
     response: Response,
     next: NextFunction
   ) {
-    const containersService = new ContainersService();
+    const imagesService = new ImagesService();
 
     try {
       const { id } = request.params;
-      await containersService.delete(id);
-      return response.status(201).json();
+      await imagesService.delete(id);
+      return response.status(201).json();;
     } catch (err) {
        next(err);
     }
@@ -62,10 +62,10 @@ export class ContainersController {
     response: Response,
     next: NextFunction
   ) {
-    const containersService = new ContainersService();
+    const imagesService = new ImagesService();
 
     try {
-      await containersService.deleteAll();
+      await imagesService.deleteAll();
       return response.status(201).json();;
     } catch (err) {
       next(err);

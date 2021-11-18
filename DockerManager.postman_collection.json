@@ -1,0 +1,249 @@
+{
+	"info": {
+		"_postman_id": "9027104a-6a28-4595-b1ed-6aa38ef2d089",
+		"name": "Docker Manager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Containers",
+			"item": [
+				{
+					"name": "List All Containers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/containers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"containers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Container",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/containers/5fb113e5f7af603167cc774b3808c588d9d395e6d497a91d4a59e2d23f7fccdb",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"containers",
+								"5fb113e5f7af603167cc774b3808c588d9d395e6d497a91d4a59e2d23f7fccdb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Container",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"nginx_test\",\n    \"image\": \"nginx\",\n    \"port\": \"8080:80\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/containers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"containers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Container",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/containers/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"containers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete All Containers",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/containers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"containers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Images",
+			"item": [
+				{
+					"name": "List All Images",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/images",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"images"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Image",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/images/sha256:eb82a397daaf176f244e990aa6f550422a764a88759f43e641c3a1323953deb7",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"images",
+								"sha256:eb82a397daaf176f244e990aa6f550422a764a88759f43e641c3a1323953deb7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pull Image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"nginx\",\n    \"tag\": \"latest\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/images",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"images"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Image",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/images/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"images",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete All Images",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/images",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"images"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3333"
+		}
+	]
+}
